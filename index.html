@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PPI Tracker v5.5</title>
+    <title>PPI Tracker v5.6</title>
     
     <meta name="theme-color" content="#16a34a">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,10 +11,11 @@
     <meta name="apple-mobile-web-app-title" content="PPI Tracker">
     <meta name="description" content="Track your PPI medication intake, monitor intervals, and manage inventory.">
     
+    <!-- Updated Manifest to match vit2deploy1 style (Readable, URL encoded) -->
+    <link rel="manifest" href='data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22PPI%20Tracker%22%2C%22short_name%22%3A%22PPI%20Track%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23ffffff%22%2C%22theme_color%22%3A%22%2316a34a%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Funpkg.com%2Flucide-static%40latest%2Ficons%2Fpill.svg%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D'>
+
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojMTZhMzRhO2JvcmRlci1yYWRpdXM6MjAlIj48cGF0aCBkPSJNMjU2IDQ4QzE0MS4xIDQ4IDQ4IDE0MS4xIDQ4IDI1NlMyNTYgNDY0IDI1NiA0NjRzMjA4LTkzLjEgMjA4LTIwOFMzNzAuOSA0OCAyNTYgNDh6bTAgNDE2Yy04OC40IDAtMTYwLTcxLjYtMTYwLTE2MHM3MS42LTE2MCAxNjAtMTYwIDE2MCA3MS42IDE2MCAxNjAtNzEuNiAxNjAtMTYwIDE2MHoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMiIvPjxwYXRoIGQ9Ik0xNjAgMTc2bDE5MiAxOTIgMTYuOC0xNi44Yzk2LTk2IDAtMTkyLTQ4LTIxNi0yNC0xMi05Ni0xMi0xNDQuOCAzNi44TDE2MCAxNzZ6IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTE0My4yIDE5Mi44TDE5Mi44IDE0My4yIDE3NiAxMjZjLTk2LTk2LTE5MiAwLTIxNiA0OC0xMiAyNC0xMiA5NiAzNi44IDE0NC44bDE2LjQgMTZ6IiBmaWxsPSIjZGNmMmNmIi8+PC9zdmc+">
     <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojMTZhMzRhIj48cGF0aCBkPSJNMjU2IDQ4QzE0MS4xIDQ4IDQ4IDE0MS4xIDQ4IDI1NlMyNTYgNDY0IDI1NiA0NjRzMjA4LTkzLjEgMjA4LTIwOFMzNzAuOSA0OCAyNTYgNDh6bTAgNDE2Yy04OC40IDAtMTYwLTcxLjYtMTYwLTE2MHM3MS42LTE2MCAxNjAtMTYwIDE2MCA3MS42IDE2MCAxNjAtNzEuNiAxNjAtMTYwIDE2MHoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMiIvPjxwYXRoIGQ9Ik0xNjAgMTc2bDE5MiAxOTIgMTYuOC0xNi44Yzk2LTk2IDAtMTkyLTQ4LTIxNi0yNC0xMi05Ni0xMi0xNDQuOCAzNi44TDE2MCAxNzZ6IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTE0My4yIDE5Mi44TDE5Mi44IDE0My4yIDE3NiAxMjZjLTk2LTk2LTE5MiAwLTIxNiA0OC0xMiAyNC0xMiA5NiAzNi44IDE0NC44bDE2LjQgMTZ6IiBmaWxsPSIjZGNmMmNmIi8+PC9zdmc+">
-
-    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIlBQSSBUcmFja2VyIiwKICAic2hvcnRfbmFtZSI6ICJQUEkgVHJhY2siLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2ZmZmZmZiIsCiAgInRoZW1lX2NvbG9yIjogIiMxNmEzNGEiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgInNjb3BlIjogIi4iLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJkeUI0Yld4dWMxOWlkSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWZkbWxsZDBKdmVDMHlNQzB4TkNBNU1USTBOVEV5SW5OMGZVeDRMVzFzYm1OelpTMXZjbWN5T1RBaSZnQzIxaGRHaGdJR1E5SWpNd01EQWdOVEV5TlRFeUlpQnpkSGxzWlQwaVltRmphM2R2ZFc1a0xXTnZiRzl5T2pFeE5tRXpOR0U3WW05eVpHVnlMWEpoWkdsMWMyb3lNQ2wlSWo0OGNHRjBhQ0JrUFNKTU1qVTJOR2hETVRReExqRUlORGc4TkRneE5ERXVNUVE0SURJMU5uRTVNeXgwT0NBMU1EQTBOVEV4TXlRMElESTFObE15TlRZZ05EWTBJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EWTRJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EaDZhVzB3SURReE5tTXRPRGc1TGpRNElERXlNaTFrTVM1MkxURTJNSHMzTVM0MkxURTJNQ0F4TmpBdlh6TXdMekUxTWkweE5qQWdNVFl3SURjeUxqWWdNVFl3SURJMU5pMDNNUzQySURFMk1DQXhTmpCNmFTSWdammxzYkQwaUkyWm1abVptWm1ZaUlHOXdZV05wZEhrOUlqQXVNaUl2UGp4d2VYaG9JR1E5SWsweE5qQWdNVGMyYkRFNU1pQXhPVEl3SURFMkxqZ3RNVFl1T0dNNU5pMDVOUTB4TmpJdE5EZ3RNakUyTFRJMExURXlMVGsyTFRFeUxURTBOQzQ0SURNNk9FUXhOakFnTVRjNmVpSWdammxzYkQwaUkyWm1abVptWm1ZaUl2NCs4Y0dGMGFDQmtQU0pOTVRRekxqSXVNVGt5T0VReU9DQXhORE11TWlBeE56WWdNVFkyWXkwNU5pMDVOaTAxT1RJd0xUSXhOaUEwT0MweE1pQXlOQ001TGpRNElETTJMakRnTVRRMUxqaGlNQ3hXTGpRWTBNVGt6ZWlJZ1ptbHNiRDBpSTJKalZ6SmpaZ2kvUGM4L2MzWm5QZz09IiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJkeUI0Yld4dWMxOWlkSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWZkbWxsZDBKdmVDMHlNQzB4TkNBNU1USTBOVEV5SW5OMGZVeDRMVzFzYm1OelpTMXZjbWN5T1RBaSZnQzIxaGRHaGdJR1E5SWpNd01EQWdOVEV5TlRFeUlpQnpkSGxzWlQwaVltRmphM2R2ZFc1a0xXTnZiRzl5T2pFeE5tRXpOR0U3WW05eVpHVnlMWEpoWkdsMWMyb3lNQ2wlSWo0OGNHRjBhQ0JrUFNKTU1qVTJOR2hETVRReExqRUlORGc4TkRneE5ERXVNUVE0SURJMU5uRTVNeXgwT0NBMU1EQTBOVEV4TXlRMElESTFObE15TlRZZ05EWTBJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EWTRJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EaDZhVzB3SURReE5tTXRPRGc1TGpRNElERXlNaTFrTVM1MkxURTJNSHMzTVM0MkxURTJNQ0F4TmpBdlh6TXdMekUxTWkweE5qQWdNVFl3SURjeUxqWWdNVFl3SURJMU5pMDNNUzQySURFMk1DQXhTmpCNmFTSWdammxzYkQwaUkyWm1abVptWm1ZaUlHOXdZV05wZEhrOUlqQXVNaUl2UGp4d2VYaG9JR1E5SWsweE5qQWdNVGMyYkRFNU1pQXhPVEl3SURFMkxqZ3RNVFl1T0dNNU5pMDVOUTB4TmpJdE5EZ3RNakUyTFRJMExURXlMVGsyTFRFeUxURTBOQzQ0SURNNk9FUXhOakFnTVRjNmVpSWdammxzYkQwaUkyWm1abVptWm1ZaUl2NCs4Y0dGMGFDQmtQU0pOTVRRekxqSXVNVGt5T0VReU9DQXhORE11TWlBeE56WWdNVFkyWXkwNU5pMDVOaTAxT1RJd0xUSXhOaUEwT0MweE1pQXlOQ001TGpRNElETTJMakRnTVRRMUxqaGlNQ3hXTGpRWTBNVGt6ZWlJZ1ptbHNiRDBpSTJKalZ6SmpaZ2kvUGM4L2MzWm5QZz09IiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfQogIF0KfQ==">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -149,6 +150,7 @@
 
     <input type="file" id="import-file" class="hidden" accept=".json,.csv" onchange="handleFileImport(this)">
 
+    <!-- Standard Modal -->
     <div id="modal-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div id="modal-content" class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl max-w-sm w-full p-6 transform transition-all border border-gray-100 dark:border-gray-800">
             <h3 id="modal-title" class="text-lg font-bold text-gray-900 dark:text-white mb-2">Confirm Action</h3>
@@ -157,6 +159,34 @@
                 <button onclick="closeModal('modal-overlay')" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium text-sm transition-colors">Cancel</button>
                 <button id="modal-confirm-btn" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm transition-colors shadow-lg shadow-red-200 dark:shadow-none">Confirm</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Install Instructions Modal (New from vit2deploy1) -->
+    <div id="install-modal-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl max-w-sm w-full p-6 border border-gray-100 dark:border-gray-800">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">Install App</h3>
+                <button onclick="closeModal('install-modal-overlay')" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            
+            <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+                <div class="flex items-start gap-3">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="share" class="w-5 h-5"></i></div>
+                    <div>
+                        <p class="font-bold text-gray-900 dark:text-white">1. Tap Share / Menu</p>
+                        <p class="text-xs">Open your browser menu.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><i data-lucide="plus-square" class="w-5 h-5"></i></div>
+                    <div>
+                        <p class="font-bold text-gray-900 dark:text-white">2. Add to Home Screen</p>
+                        <p class="text-xs">Scroll down and select "Add to Home Screen".</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="closeModal('install-modal-overlay')" class="mt-6 w-full py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl text-sm transition-colors">Got it</button>
         </div>
     </div>
 
@@ -321,14 +351,24 @@
         const STORE_NAME = 'intakes';
         let db;
 
-        // --- PWA Installer State ---
+        // --- PWA Installer State & Logic ---
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
             console.log('Install prompt captured');
-            if (state.activeTab === 'settings') render();
         });
+
+        async function triggerInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+            } else {
+                // Show manual instructions if prompt not available (e.g. iOS or already installed)
+                document.getElementById('install-modal-overlay').classList.remove('hidden');
+            }
+        }
 
         // --- State Management ---
         const state = {
@@ -867,15 +907,6 @@
             document.getElementById('modal-overlay').classList.remove('hidden');
         }
         
-        async function installPWA() {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`User response to the install prompt: ${outcome}`);
-            deferredPrompt = null;
-            render();
-        }
-
         // --- Rendering ---
         function render() {
             // FIX: Prevent re-render if user is typing in filter inputs
@@ -1079,17 +1110,6 @@
                     <div class="space-y-6 bar-animate">
                         <div class="px-2"><h2 class="text-2xl font-bold text-gray-900 dark:text-white">Settings</h2><p class="text-sm text-gray-500 dark:text-gray-400">Manage your preferences.</p></div>
                         
-                        ${deferredPrompt ? `
-                        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 shadow-lg shadow-blue-200 dark:shadow-none text-white relative overflow-hidden">
-                             <div class="relative z-10">
-                                <h3 class="font-bold text-lg mb-1">Install App</h3>
-                                <p class="text-blue-100 text-xs mb-4 max-w-[80%]">Add PPI Tracker to your home screen for easier access and a native experience.</p>
-                                <button onclick="installPWA()" class="bg-white text-blue-600 px-4 py-2 rounded-xl text-sm font-bold shadow-sm hover:bg-blue-50 transition-colors">Install Now</button>
-                             </div>
-                             <i data-lucide="smartphone" class="absolute -bottom-4 -right-4 w-32 h-32 text-white opacity-10 rotate-12"></i>
-                        </div>
-                        ` : ''}
-
                         <div class="bg-white dark:bg-gray-850 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
                             <div class="flex items-center gap-3 mb-4"><div class="p-2 bg-green-100 dark:bg-green-900/30 rounded-xl"><i data-lucide="pill" class="w-5 h-5 text-green-600 dark:text-green-400"></i></div><h3 class="font-bold text-gray-900 dark:text-white">Medicines</h3></div>
                             <div class="space-y-3 mb-4">
@@ -1120,6 +1140,9 @@
                         <div class="bg-white dark:bg-gray-850 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
                             <div class="flex items-center gap-3 mb-6"><div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-xl"><i data-lucide="database" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i></div><h3 class="font-bold text-gray-900 dark:text-white">Data & Reports</h3></div>
                             <div class="space-y-3">
+                                <button onclick="triggerInstall()" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors group">
+                                    <div class="flex items-center gap-3"><i data-lucide="download-cloud" class="w-5 h-5 text-gray-400 group-hover:text-blue-500"></i><span class="font-medium text-gray-700 dark:text-gray-300">Install App</span></div><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                                </button>
                                 <button onclick="printReport()" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors group">
                                     <div class="flex items-center gap-3"><i data-lucide="printer" class="w-5 h-5 text-gray-400 group-hover:text-blue-500"></i><span class="font-medium text-gray-700 dark:text-gray-300">Doctor's Report</span></div><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
                                 </button>
