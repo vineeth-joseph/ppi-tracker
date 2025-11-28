@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PPI Tracker v5.5</title>
+    
+    <meta name="theme-color" content="#16a34a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="PPI Tracker">
+    <meta name="description" content="Track your PPI medication intake, monitor intervals, and manage inventory.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojMTZhMzRhO2JvcmRlci1yYWRpdXM6MjAlIj48cGF0aCBkPSJNMjU2IDQ4QzE0MS4xIDQ4IDQ4IDE0MS4xIDQ4IDI1NlMyNTYgNDY0IDI1NiA0NjRzMjA4LTkzLjEgMjA4LTIwOFMzNzAuOSA0OCAyNTYgNDh6bTAgNDE2Yy04OC40IDAtMTYwLTcxLjYtMTYwLTE2MHM3MS42LTE2MCAxNjAtMTYwIDE2MCA3MS42IDE2MCAxNjAtNzEuNiAxNjAtMTYwIDE2MHoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMiIvPjxwYXRoIGQ9Ik0xNjAgMTc2bDE5MiAxOTIgMTYuOC0xNi44Yzk2LTk2IDAtMTkyLTQ4LTIxNi0yNC0xMi05Ni0xMi0xNDQuOCAzNi44TDE2MCAxNzZ6IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTE0My4yIDE5Mi44TDE5Mi44IDE0My4yIDE3NiAxMjZjLTk2LTk2LTE5MiAwLTIxNiA0OC0xMiAyNC0xMiA5NiAzNi44IDE0NC44bDE2LjQgMTZ6IiBmaWxsPSIjZGNmMmNmIi8+PC9zdmc+">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojMTZhMzRhIj48cGF0aCBkPSJNMjU2IDQ4QzE0MS4xIDQ4IDQ4IDE0MS4xIDQ4IDI1NlMyNTYgNDY0IDI1NiA0NjRzMjA4LTkzLjEgMjA4LTIwOFMzNzAuOSA0OCAyNTYgNDh6bTAgNDE2Yy04OC40IDAtMTYwLTcxLjYtMTYwLTE2MHM3MS42LTE2MCAxNjAtMTYwIDE2MCA3MS42IDE2MCAxNjAtNzEuNiAxNjAtMTYwIDE2MHoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMiIvPjxwYXRoIGQ9Ik0xNjAgMTc2bDE5MiAxOTIgMTYuOC0xNi44Yzk2LTk2IDAtMTkyLTQ4LTIxNi0yNC0xMi05Ni0xMi0xNDQuOCAzNi44TDE2MCAxNzZ6IiBmaWxsPSIjZmZmZmZmIi8+PHBhdGggZD0iTTE0My4yIDE5Mi44TDE5Mi44IDE0My4yIDE3NiAxMjZjLTk2LTk2LTE5MiAwLTIxNiA0OC0xMiAyNC0xMiA5NiAzNi44IDE0NC44bDE2LjQgMTZ6IiBmaWxsPSIjZGNmMmNmIi8+PC9zdmc+">
+
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIlBQSSBUcmFja2VyIiwKICAic2hvcnRfbmFtZSI6ICJQUEkgVHJhY2siLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2ZmZmZmZiIsCiAgInRoZW1lX2NvbG9yIjogIiMxNmEzNGEiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgInNjb3BlIjogIi4iLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJkeUI0Yld4dWMxOWlkSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWZkbWxsZDBKdmVDMHlNQzB4TkNBNU1USTBOVEV5SW5OMGZVeDRMVzFzYm1OelpTMXZjbWN5T1RBaSZnQzIxaGRHaGdJR1E5SWpNd01EQWdOVEV5TlRFeUlpQnpkSGxzWlQwaVltRmphM2R2ZFc1a0xXTnZiRzl5T2pFeE5tRXpOR0U3WW05eVpHVnlMWEpoWkdsMWMyb3lNQ2wlSWo0OGNHRjBhQ0JrUFNKTU1qVTJOR2hETVRReExqRUlORGc4TkRneE5ERXVNUVE0SURJMU5uRTVNeXgwT0NBMU1EQTBOVEV4TXlRMElESTFObE15TlRZZ05EWTBJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EWTRJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EaDZhVzB3SURReE5tTXRPRGc1TGpRNElERXlNaTFrTVM1MkxURTJNSHMzTVM0MkxURTJNQ0F4TmpBdlh6TXdMekUxTWkweE5qQWdNVFl3SURjeUxqWWdNVFl3SURJMU5pMDNNUzQySURFMk1DQXhTmpCNmFTSWdammxzYkQwaUkyWm1abVptWm1ZaUlHOXdZV05wZEhrOUlqQXVNaUl2UGp4d2VYaG9JR1E5SWsweE5qQWdNVGMyYkRFNU1pQXhPVEl3SURFMkxqZ3RNVFl1T0dNNU5pMDVOUTB4TmpJdE5EZ3RNakUyTFRJMExURXlMVGsyTFRFeUxURTBOQzQ0SURNNk9FUXhOakFnTVRjNmVpSWdammxzYkQwaUkyWm1abVptWm1ZaUl2NCs4Y0dGMGFDQmtQU0pOTVRRekxqSXVNVGt5T0VReU9DQXhORE11TWlBeE56WWdNVFkyWXkwNU5pMDVOaTAxT1RJd0xUSXhOaUEwT0MweE1pQXlOQ001TGpRNElETTJMakRnTVRRMUxqaGlNQ3hXTGpRWTBNVGt6ZWlJZ1ptbHNiRDBpSTJKalZ6SmpaZ2kvUGM4L2MzWm5QZz09IiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJkeUI0Yld4dWMxOWlkSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SWZkbWxsZDBKdmVDMHlNQzB4TkNBNU1USTBOVEV5SW5OMGZVeDRMVzFzYm1OelpTMXZjbWN5T1RBaSZnQzIxaGRHaGdJR1E5SWpNd01EQWdOVEV5TlRFeUlpQnpkSGxzWlQwaVltRmphM2R2ZFc1a0xXTnZiRzl5T2pFeE5tRXpOR0U3WW05eVpHVnlMWEpoWkdsMWMyb3lNQ2wlSWo0OGNHRjBhQ0JrUFNKTU1qVTJOR2hETVRReExqRUlORGc4TkRneE5ERXVNUVE0SURJMU5uRTVNeXgwT0NBMU1EQTBOVEV4TXlRMElESTFObE15TlRZZ05EWTBJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EWTRJREkxTmkweE5qQTBNRGM1TGpFNElETXdMamt5TlRZZ05EaDZhVzB3SURReE5tTXRPRGc1TGpRNElERXlNaTFrTVM1MkxURTJNSHMzTVM0MkxURTJNQ0F4TmpBdlh6TXdMekUxTWkweE5qQWdNVFl3SURjeUxqWWdNVFl3SURJMU5pMDNNUzQySURFMk1DQXhTmpCNmFTSWdammxzYkQwaUkyWm1abVptWm1ZaUlHOXdZV05wZEhrOUlqQXVNaUl2UGp4d2VYaG9JR1E5SWsweE5qQWdNVGMyYkRFNU1pQXhPVEl3SURFMkxqZ3RNVFl1T0dNNU5pMDVOUTB4TmpJdE5EZ3RNakUyTFRJMExURXlMVGsyTFRFeUxURTBOQzQ0SURNNk9FUXhOakFnTVRjNmVpSWdammxzYkQwaUkyWm1abVptWm1ZaUl2NCs4Y0dGMGFDQmtQU0pOTVRRekxqSXVNVGt5T0VReU9DQXhORE11TWlBeE56WWdNVFkyWXkwNU5pMDVOaTAxT1RJd0xUSXhOaUEwT0MweE1pQXlOQ001TGpRNElETTJMakRnTVRRMUxqaGlNQ3hXTGpRWTBNVGt6ZWlJZ1ptbHNiRDBpSTJKalZ6SmpaZ2kvUGM4L2MzWm5QZz09IiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfQogIF0KfQ==">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            safelist: [
+                'bg-green-600', 'bg-green-500', 'bg-green-50', 'text-green-600', 'from-green-600', 'shadow-green-200', 'ring-green-500', 'dark:bg-green-900', 'dark:text-green-400',
+                'bg-red-600', 'bg-red-500', 'bg-red-50', 'text-red-600', 'from-red-600', 'shadow-red-200', 'ring-red-500', 'dark:bg-red-900', 'dark:text-red-400',
+                'bg-amber-600', 'bg-amber-500', 'bg-amber-50', 'text-amber-600', 'from-amber-600', 'shadow-amber-200', 'ring-amber-500', 'dark:bg-amber-900', 'dark:text-amber-400',
+                'to-emerald-600', 'to-orange-600', 'to-yellow-500',
+                'bg-emerald-50', 'bg-orange-50', 'bg-yellow-50',
+                'text-emerald-600', 'text-orange-600', 'text-yellow-600',
+                'bg-yellow-500', 'bg-yellow-50', 'text-yellow-600', 'dark:bg-yellow-900/30'
+            ],
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            750: '#2d3748',
+                            850: '#1a202c',
+                            950: '#0d1117',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 0.2s, transform 0.2s; }
+        .modal-exit { opacity: 0; transform: scale(0.95); transition: opacity 0.2s, transform 0.2s; }
+        
+        @keyframes slideUpFade {
+            0% { transform: translateY(100%); opacity: 0; }
+            10% { transform: translateY(0); opacity: 1; }
+            90% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(20px); opacity: 0; }
+        }
+        .toast-anim { animation: slideUpFade 3s ease-in-out forwards; }
+
+        .history-list::-webkit-scrollbar { width: 4px; }
+        .history-list::-webkit-scrollbar-track { background: transparent; }
+        .history-list::-webkit-scrollbar-thumb { background-color: #e5e7eb; border-radius: 20px; }
+        .dark .history-list::-webkit-scrollbar-thumb { background-color: #4b5563; }
+        .hidden { display: none; }
+        
+        @keyframes growUp {
+            from { height: 0; }
+            to { height: var(--target-height); }
+        }
+        .bar-animate { animation: growUp 0.6s ease-out forwards; }
+
+        @media print {
+            body { background: white; color: black; }
+            #app, #toast-container, .no-print { display: none !important; }
+            #print-report-container { display: block !important; position: static !important; width: 100% !important; height: auto !important; overflow: visible !important; }
+            .print-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            .print-table th, .print-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            .print-table th { background-color: #f2f2f2; font-weight: bold; }
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #4F46E5;
+            cursor: pointer;
+            margin-top: -8px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #E5E7EB;
+            border-radius: 2px;
+        }
+        .dark input[type=range]::-webkit-slider-runnable-track {
+            background: #4B5563;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 min-h-screen select-none transition-colors duration-300">
+
+    <div id="app" class="max-w-md mx-auto relative pb-28 pt-8 px-4 md:px-8 min-h-screen flex flex-col">
+        <div class="flex items-center justify-center flex-1 h-64 text-gray-400 dark:text-gray-600">
+            <span class="animate-pulse">Loading database...</span>
+        </div>
+    </div>
+
+    <div id="print-report-container" class="hidden bg-white p-8">
+        <h1 class="text-2xl font-bold mb-2">Medication History Report</h1>
+        <p class="text-sm text-gray-500 mb-6" id="report-date"></p>
+        
+        <div class="mb-6 grid grid-cols-3 gap-4 text-sm">
+            <div class="p-3 border rounded">
+                <span class="block text-gray-500">Doses (Selected)</span>
+                <span class="font-bold text-lg" id="report-total">0</span>
+            </div>
+            <div class="p-3 border rounded">
+                <span class="block text-gray-500">Avg Interval</span>
+                <span class="font-bold text-lg" id="report-avg">0h</span>
+            </div>
+        </div>
+
+        <table class="print-table text-sm w-full">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Medicine</th>
+                    <th>Dosage</th>
+                    <th>Severity (1-5)</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody id="report-body">
+                </tbody>
+        </table>
+        <div class="mt-8 text-xs text-gray-400 text-center border-t pt-4">
+            Generated by PPI Tracker App
+        </div>
+    </div>
+
+    <div id="toast-container" class="fixed bottom-24 left-0 right-0 z-50 flex justify-center pointer-events-none px-4"></div>
+
+    <input type="file" id="import-file" class="hidden" accept=".json,.csv" onchange="handleFileImport(this)">
+
+    <div id="modal-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div id="modal-content" class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl max-w-sm w-full p-6 transform transition-all border border-gray-100 dark:border-gray-800">
+            <h3 id="modal-title" class="text-lg font-bold text-gray-900 dark:text-white mb-2">Confirm Action</h3>
+            <p id="modal-message" class="text-gray-500 dark:text-gray-400 text-sm mb-6">Are you sure you want to do this?</p>
+            <div class="flex gap-3 justify-end">
+                <button onclick="closeModal('modal-overlay')" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium text-sm transition-colors">Cancel</button>
+                <button id="modal-confirm-btn" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm transition-colors shadow-lg shadow-red-200 dark:shadow-none">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="refill-modal-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div id="refill-modal-content" class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl max-w-sm w-full p-6 transform transition-all border border-gray-100 dark:border-gray-800">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Refill Inventory</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">How many pills did you buy?</p>
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <button onclick="addInventory(14)" class="py-3 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700 rounded-xl font-semibold text-gray-700 dark:text-gray-200 transition-all">+14</button>
+                <button onclick="addInventory(28)" class="py-3 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700 rounded-xl font-semibold text-gray-700 dark:text-gray-200 transition-all">+28</button>
+                <button onclick="addInventory(60)" class="py-3 bg-gray-50 dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-gray-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700 rounded-xl font-semibold text-gray-700 dark:text-gray-200 transition-all">+60</button>
+            </div>
+            <div class="relative mb-6">
+                 <label class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1.5 block">Custom Amount</label>
+                 <div class="flex gap-2">
+                    <input type="number" id="custom-refill" placeholder="0" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block p-3 font-medium shadow-sm">
+                    <button onclick="addInventory(parseInt(document.getElementById('custom-refill').value) || 0)" class="px-4 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-bold">Add</button>
+                 </div>
+            </div>
+            <div class="flex justify-between items-center mt-6">
+                <button onclick="resetInventory()" class="text-red-500 hover:text-red-700 font-medium text-xs uppercase tracking-wider transition-colors">Reset to 0</button>
+                <button onclick="closeModal('refill-modal-overlay')" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 font-medium text-sm transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="export-modal-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-end md:items-center justify-center p-0 md:p-4">
+        <div id="export-modal-content" class="bg-white dark:bg-gray-900 rounded-t-3xl md:rounded-2xl shadow-2xl max-w-sm w-full p-6 transform transition-all h-auto border-t border-gray-100 dark:border-gray-800">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <div class="bg-blue-100 dark:bg-blue-900/30 p-1.5 rounded-lg">
+                        <i data-lucide="download" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    Export Data
+                </h3>
+                <button onclick="closeModal('export-modal-overlay')" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Choose a format to download your medication history.</p>
+
+            <div class="space-y-3">
+                <button onclick="exportData('csv')" class="w-full flex items-center justify-between bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-semibold rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="file-spreadsheet" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+                        <span>CSV Format</span>
+                    </div>
+                    <span class="text-xs text-gray-400 font-normal">For Excel/Sheets</span>
+                </button>
+
+                <button onclick="exportData('json')" class="w-full flex items-center justify-between bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-semibold rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="file-json" class="w-5 h-5 text-orange-600 dark:text-orange-400"></i>
+                        <span>JSON Format (Backup)</span>
+                    </div>
+                    <span class="text-xs text-gray-400 font-normal">Full Restore including Settings</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="log-modal-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-end md:items-center justify-center p-0 md:p-4">
+        <div id="log-modal-content" class="bg-white dark:bg-gray-900 rounded-t-3xl md:rounded-2xl shadow-2xl max-w-sm w-full p-6 transform transition-all h-auto border-t border-gray-100 dark:border-gray-800 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <div class="bg-green-100 dark:bg-green-900/30 p-1.5 rounded-lg">
+                        <i data-lucide="plus" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
+                    </div>
+                    Log Dose
+                </h3>
+                <button onclick="closeModal('log-modal-overlay')" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">Time of Intake</label>
+                    <input type="datetime-local" id="log-datetime" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-green-500 focus:border-green-500 block p-3 font-medium shadow-sm" required>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Medicine</label>
+                        <select id="log-medicine" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-green-500 focus:border-green-500 block p-3 shadow-sm">
+                            </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Dosage</label>
+                        <select id="log-dosage" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-green-500 focus:border-green-500 block p-3 shadow-sm">
+                            <option value="10mg">10 mg</option>
+                            <option value="20mg" selected>20 mg</option>
+                            <option value="40mg">40 mg</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-end mb-2">
+                        <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Symptom Severity</label>
+                        <span id="severity-label" class="text-xs font-bold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded">None (1)</span>
+                    </div>
+                    <input type="range" id="log-severity" min="1" max="5" value="1" step="1" class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-green-600" oninput="updateSeverityLabel(this.value)">
+                    <div class="flex justify-between text-[10px] text-gray-400 mt-1 px-1">
+                        <span>Mild</span>
+                        <span>Moderate</span>
+                        <span>Severe</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1.5">Reason (Optional)</label>
+                    <input type="text" id="log-reason" placeholder="e.g. Heartburn, Before Dinner..." class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-green-500 focus:border-green-500 block p-3 shadow-sm placeholder-gray-400 dark:placeholder-gray-500 mb-3">
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="setReason('Prevention')" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-xs font-medium text-gray-600 dark:text-gray-300 transition-colors">🛡️ Prevention</button>
+                        <button onclick="setReason('Heartburn')" class="px-3 py-1.5 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg text-xs font-medium text-red-600 dark:text-red-400 transition-colors">🔥 Heartburn</button>
+                        <button onclick="setReason('Acid Reflux')" class="px-3 py-1.5 bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/40 rounded-lg text-xs font-medium text-orange-600 dark:text-orange-400 transition-colors">🌊 Reflux</button>
+                        <button onclick="setReason('Indigestion')" class="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded-lg text-xs font-medium text-blue-600 dark:text-blue-400 transition-colors">🤢 Indigestion</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <button onclick="submitDose()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl py-3.5 shadow-lg shadow-green-200 dark:shadow-none active:scale-[0.98] transition-all">
+                    Save Dose
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Single File Service Worker Registration (Blob Hack) ---
+        // PWA Strict Requirement: A service worker must be registered.
+        // In a single file, we use a Blob, but we must be careful with the scope.
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                self.addEventListener('install', (event) => {
+                    self.skipWaiting();
+                });
+                self.addEventListener('activate', (event) => {
+                    event.waitUntil(self.clients.claim());
+                });
+                self.addEventListener('fetch', (event) => {
+                    // Pass through requests directly
+                });
+            `;
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            
+            // Register with explicit scope to ensure it controls the page
+            navigator.serviceWorker.register(swUrl, { scope: './' })
+                .then(reg => console.log('SW Registered:', reg))
+                .catch(err => console.log('SW Registration Failed:', err));
+        }
+
+        // --- IndexedDB Configuration ---
+        const DB_NAME = 'PPITrackerDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'intakes';
+        let db;
+
+        // --- PWA Installer State ---
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('Install prompt captured');
+            if (state.activeTab === 'settings') render();
+        });
+
+        // --- State Management ---
+        const state = {
+            intakes: [],
+            darkMode: localStorage.getItem('darkMode') === 'true',
+            pillsLeft: parseInt(localStorage.getItem('pills_left') || '14'),
+            showCalendar: localStorage.getItem('show_calendar') === 'true',
+            activeTab: 'home',
+            medicines: JSON.parse(localStorage.getItem('medicines')) || ['Omeprazole', 'Pantoprazole', 'Lansoprazole', 'Esomeprazole'],
+            now: new Date(),
+            viewDate: new Date(),
+            lastRenderMinute: new Date().getMinutes(),
+            filters: {
+                medicine: '',
+                dosage: '',
+                reason: '',
+                startDate: '',
+                endDate: '',
+                startTime: '',
+                endTime: ''
+            },
+            showFilters: false
+        };
+
+        // --- Theme Initialization ---
+        if (state.darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // --- Security Helper ---
+        function sanitize(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // --- Database Operations ---
+        function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                request.onerror = (event) => reject(event.target.error);
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'timestamp' });
+                    }
+                };
+                request.onsuccess = async (event) => {
+                    db = event.target.result;
+                    await migrateFromLocalStorage();
+                    await loadData();
+                    resolve(db);
+                };
+            });
+        }
+
+        async function migrateFromLocalStorage() {
+            const raw = localStorage.getItem('med_intakes');
+            if (raw) {
+                try {
+                    const parsed = JSON.parse(raw);
+                    const normalized = parsed.map(item => {
+                        if (typeof item === 'string') return { timestamp: item, reason: '', severity: 1, dosage: '20mg', medicine: 'Omeprazole' };
+                        return item;
+                    });
+                    const tx = db.transaction(STORE_NAME, 'readwrite');
+                    const store = tx.objectStore(STORE_NAME);
+                    normalized.forEach(item => store.put(item));
+                    await new Promise(resolve => tx.oncomplete = resolve);
+                    localStorage.removeItem('med_intakes');
+                } catch (e) { console.error("Migration failed", e); }
+            }
+        }
+
+        function loadData() {
+            return new Promise((resolve) => {
+                if (!db) return resolve();
+                const tx = db.transaction(STORE_NAME, 'readonly');
+                const store = tx.objectStore(STORE_NAME);
+                const request = store.getAll();
+                request.onsuccess = () => {
+                    state.intakes = request.result;
+                    render();
+                    resolve();
+                };
+            });
+        }
+
+        function addDoseDB(doseObj) {
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            const store = tx.objectStore(STORE_NAME);
+            store.put(doseObj);
+            tx.oncomplete = () => {
+                state.pillsLeft = Math.max(0, state.pillsLeft - 1);
+                localStorage.setItem('pills_left', state.pillsLeft);
+                loadData();
+                showToast("Dose recorded successfully");
+            };
+        }
+        
+        function bulkAddDB(items) {
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                const store = tx.objectStore(STORE_NAME);
+                items.forEach(item => {
+                    if (item.timestamp && !isNaN(new Date(item.timestamp).getTime())) store.put(item);
+                });
+                tx.oncomplete = () => { loadData(); resolve(); };
+                tx.onerror = (e) => reject(e);
+            });
+        }
+
+        function deleteDoseDB(timestamp) {
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            const store = tx.objectStore(STORE_NAME);
+            store.delete(timestamp);
+            tx.oncomplete = () => {
+                state.intakes = state.intakes.filter(t => t.timestamp !== timestamp);
+                state.pillsLeft += 1;
+                localStorage.setItem('pills_left', state.pillsLeft);
+                render();
+                showToast("Entry deleted & Inventory restored");
+            };
+        }
+
+        function clearDB() {
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            const store = tx.objectStore(STORE_NAME);
+            store.clear();
+            tx.oncomplete = () => {
+                state.intakes = [];
+                render();
+                showToast("All history cleared");
+            };
+        }
+
+        // --- Logic & Helpers ---
+        function getSortedIntakes() {
+            return [...state.intakes].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        }
+
+        function getFilteredIntakes() {
+            const sorted = getSortedIntakes();
+            const { medicine, dosage, reason, startDate, endDate, startTime, endTime } = state.filters;
+
+            return sorted.filter(item => {
+                const itemDate = new Date(item.timestamp);
+                const itemTime = itemDate.getHours() * 60 + itemDate.getMinutes();
+
+                if (medicine && item.medicine !== medicine) return false;
+                if (dosage && item.dosage !== dosage) return false;
+                if (reason && !(item.reason || '').toLowerCase().includes(reason.toLowerCase())) return false;
+                if (startDate) {
+                    const start = new Date(startDate);
+                    start.setHours(0,0,0,0);
+                    if (itemDate < start) return false;
+                }
+                if (endDate) {
+                    const end = new Date(endDate);
+                    end.setHours(23,59,59,999);
+                    if (itemDate > end) return false;
+                }
+                if (startTime) {
+                    const [sh, sm] = startTime.split(':').map(Number);
+                    const startMinutes = sh * 60 + sm;
+                    if (itemTime < startMinutes) return false;
+                }
+                if (endTime) {
+                    const [eh, em] = endTime.split(':').map(Number);
+                    const endMinutes = eh * 60 + em;
+                    if (itemTime > endMinutes) return false;
+                }
+                return true;
+            });
+        }
+
+        function formatTime(isoString) { return new Date(isoString).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }
+        function formatDate(isoString) { return new Date(isoString).toLocaleDateString([], { month: 'short', day: 'numeric' }); }
+        function formatDuration(ms) {
+            const minutes = Math.floor((ms / (1000 * 60)) % 60);
+            const hours = Math.floor((ms / (1000 * 60 * 60)));
+            if (hours === 0) return `${minutes}m`;
+            return `${hours}h ${minutes}m`;
+        }
+
+        function calculateStats(dataset) {
+            const sorted = dataset || getSortedIntakes();
+            
+            const historyWithIntervals = sorted.map((item, index) => {
+                const nextItem = sorted[index + 1];
+                let interval = null;
+                if (nextItem) interval = new Date(item.timestamp) - new Date(nextItem.timestamp);
+                return { ...item, interval };
+            });
+            const intervals = historyWithIntervals.filter(item => item.interval !== null).map(item => item.interval);
+            const recentIntervals = intervals.slice(0, 5);
+            const averageIntervalMs = recentIntervals.length > 0 ? recentIntervals.reduce((a, b) => a + b, 0) / recentIntervals.length : 0;
+            
+            let nextDoseTime = null;
+            if (sorted.length > 0 && averageIntervalMs > 0) {
+                const lastDose = new Date(sorted[0].timestamp).getTime();
+                nextDoseTime = new Date(lastDose + averageIntervalMs);
+            }
+            return { historyWithIntervals, averageIntervalMs, nextDoseTime, sorted };
+        }
+
+        // --- Chart Logic ---
+        function changeMonth(offset) {
+            const newDate = new Date(state.viewDate);
+            newDate.setMonth(newDate.getMonth() + offset);
+            state.viewDate = newDate;
+            render();
+        }
+
+        function getMonthlyCalendarData() {
+            const year = state.viewDate.getFullYear();
+            const month = state.viewDate.getMonth();
+            const today = new Date();
+            const firstDayOfMonth = new Date(year, month, 1);
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const startDay = firstDayOfMonth.getDay();
+            const calendarDays = [];
+            
+            for (let i = 0; i < startDay; i++) calendarDays.push({ type: 'padding' });
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dateObj = new Date(year, month, i);
+                calendarDays.push({ type: 'day', day: i, date: dateObj, count: 0, isToday: dateObj.toDateString() === today.toDateString() });
+            }
+            
+            state.intakes.forEach(item => {
+                const d = new Date(item.timestamp);
+                if (d.getFullYear() === year && d.getMonth() === month) {
+                    const dayIndex = startDay + (d.getDate() - 1);
+                    if (calendarDays[dayIndex]) calendarDays[dayIndex].count++;
+                }
+            });
+            return { calendarDays, monthLabel: state.viewDate.toLocaleDateString([], { month: 'long', year: 'numeric' }) };
+        }
+
+        // --- UI Interactions ---
+        function updateInventory(amount) {
+            state.pillsLeft += amount;
+            if (state.pillsLeft < 0) state.pillsLeft = 0;
+            localStorage.setItem('pills_left', state.pillsLeft);
+            const modal = document.getElementById('refill-modal-overlay');
+            if (!modal.classList.contains('hidden')) {
+                closeModal('refill-modal-overlay');
+                showToast(`Inventory: ${state.pillsLeft}`);
+            }
+            render();
+        }
+
+        function resetInventory() {
+            showConfirm("Reset Inventory?", "Sets count to 0.", () => {
+                state.pillsLeft = 0;
+                localStorage.setItem('pills_left', state.pillsLeft);
+                closeModal('refill-modal-overlay');
+                render();
+                showToast("Inventory reset");
+            });
+        }
+
+        function updateSeverityLabel(val) {
+            const labels = {1: "None (1)", 2: "Mild (2)", 3: "Moderate (3)", 4: "Bad (4)", 5: "Severe (5)"};
+            const colors = {1: "green", 2: "green", 3: "yellow", 4: "orange", 5: "red"};
+            
+            const el = document.getElementById('severity-label');
+            el.innerText = labels[val];
+            
+            el.className = 'text-xs font-bold px-2 py-0.5 rounded transition-colors'; 
+            const c = colors[val];
+            el.classList.add(`text-${c}-600`, `bg-${c}-50`, `dark:text-${c}-400`, `dark:bg-${c}-900/30`);
+        }
+
+        function openLogModal() {
+            const overlay = document.getElementById('log-modal-overlay');
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('log-datetime').value = now.toISOString().slice(0, 16);
+            document.getElementById('log-reason').value = '';
+            document.getElementById('log-severity').value = 1;
+            updateSeverityLabel(1);
+            
+            const select = document.getElementById('log-medicine');
+            select.innerHTML = state.medicines.map(m => `<option value="${m}">${sanitize(m)}</option>`).join('');
+            
+            overlay.classList.remove('hidden');
+            setTimeout(() => document.getElementById('log-reason').focus(), 100);
+        }
+
+        function addMedicineFromInput() {
+            const input = document.getElementById('new-med-name');
+            const name = input.value.trim();
+            if (name && !state.medicines.includes(name)) {
+                state.medicines.push(name);
+                localStorage.setItem('medicines', JSON.stringify(state.medicines));
+                input.value = '';
+                render();
+                showToast("Medicine added");
+            }
+        }
+
+        function deleteMedicine(index) {
+            if (state.medicines.length <= 1) {
+                showToast("Must have at least one medicine");
+                return;
+            }
+            showConfirm("Delete Medicine?", `Remove ${state.medicines[index]}?`, () => {
+                state.medicines.splice(index, 1);
+                localStorage.setItem('medicines', JSON.stringify(state.medicines));
+                render();
+                showToast("Medicine removed");
+            });
+        }
+
+        function editMedicine(index) {
+            const newName = prompt("Rename medicine:", state.medicines[index]);
+            if (newName && newName.trim() !== "") {
+                state.medicines[index] = newName.trim();
+                localStorage.setItem('medicines', JSON.stringify(state.medicines));
+                render();
+                showToast("Medicine updated");
+            }
+        }
+
+        function setReason(text) { document.getElementById('log-reason').value = text; }
+        function closeModal(modalId) { document.getElementById(modalId).classList.add('hidden'); }
+        function openRefillModal() {
+            document.getElementById('refill-modal-overlay').classList.remove('hidden');
+            document.getElementById('custom-refill').value = '';
+        }
+        function addInventory(n) { if (n && n > 0) updateInventory(n); }
+        function openExportModal() { document.getElementById('export-modal-overlay').classList.remove('hidden'); }
+        function triggerImport() { document.getElementById('import-file').click(); }
+        function switchTab(tab) { state.activeTab = tab; render(); }
+        function toggleCalendar() { state.showCalendar = !state.showCalendar; localStorage.setItem('show_calendar', state.showCalendar); render(); }
+        
+        function toggleFilterPanel() {
+            state.showFilters = !state.showFilters;
+            render();
+        }
+
+        function updateFilter(key, value) {
+            state.filters[key] = value;
+            render();
+        }
+
+        function clearFilters() {
+            state.filters = {
+                medicine: '',
+                dosage: '',
+                reason: '',
+                startDate: '',
+                endDate: '',
+                startTime: '',
+                endTime: ''
+            };
+            render();
+        }
+
+        function countActiveFilters() {
+            return Object.values(state.filters).filter(v => v).length;
+        }
+
+        function toggleDarkMode() {
+            state.darkMode = !state.darkMode;
+            localStorage.setItem('darkMode', state.darkMode);
+            document.documentElement.classList.toggle('dark', state.darkMode);
+            render();
+        }
+
+        function submitDose() {
+            const dateStr = document.getElementById('log-datetime').value;
+            const reason = document.getElementById('log-reason').value.trim();
+            const severity = parseInt(document.getElementById('log-severity').value);
+            const dosage = document.getElementById('log-dosage').value;
+            const medicine = document.getElementById('log-medicine').value;
+            
+            if (!dateStr) return;
+            const timestamp = new Date(dateStr).toISOString();
+            addDoseDB({ timestamp, reason, severity, dosage, medicine });
+            closeModal('log-modal-overlay');
+        }
+
+        function confirmDelete(timestamp) {
+            showConfirm("Remove Dose?", "Delete this entry?", () => deleteDoseDB(timestamp));
+        }
+        function confirmReset() {
+            showConfirm("Clear History?", "This cannot be undone.", () => clearDB());
+        }
+
+        function printReport() {
+            const tbody = document.getElementById('report-body');
+            const data = getFilteredIntakes();
+            const { averageIntervalMs } = calculateStats(data);
+
+            document.getElementById('report-date').innerText = new Date().toLocaleDateString();
+            document.getElementById('report-total').innerText = data.length;
+            document.getElementById('report-avg').innerText = averageIntervalMs ? formatDuration(averageIntervalMs) : 'N/A';
+
+            if (data.length === 0) {
+                 tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-gray-500">No records match the current filters.</td></tr>';
+            } else {
+                tbody.innerHTML = data.map(item => `
+                    <tr>
+                        <td>${formatDate(item.timestamp)}</td>
+                        <td>${formatTime(item.timestamp)}</td>
+                        <td>${sanitize(item.medicine || '-')}</td>
+                        <td>${sanitize(item.dosage || '-')}</td>
+                        <td>${item.severity || '-'}</td>
+                        <td>${sanitize(item.reason || '-')}</td>
+                    </tr>
+                `).join('');
+            }
+            
+            window.print();
+        }
+
+        // --- File I/O ---
+        function handleFileImport(input) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    const content = e.target.result;
+                    let parsedItems = [];
+                    
+                    if (file.name.endsWith('.json')) {
+                        const parsed = JSON.parse(content);
+                        if (Array.isArray(parsed)) {
+                            parsedItems = parsed;
+                        } else {
+                            if (parsed.medicines) {
+                                state.medicines = parsed.medicines;
+                                localStorage.setItem('medicines', JSON.stringify(state.medicines));
+                            }
+                            if (parsed.pillsLeft !== undefined) {
+                                state.pillsLeft = parsed.pillsLeft;
+                                localStorage.setItem('pills_left', state.pillsLeft);
+                            }
+                            parsedItems = parsed.intakes || [];
+                        }
+                    } else if (file.name.endsWith('.csv')) {
+                        parsedItems = parseCSV(content);
+                    }
+                    
+                    const clean = parsedItems.filter(i => i.timestamp).map(i => ({
+                        timestamp: i.timestamp,
+                        reason: i.reason || '',
+                        severity: i.severity || 1,
+                        dosage: i.dosage || '20mg',
+                        medicine: i.medicine || 'Unknown'
+                    }));
+                    
+                    if (clean.length) {
+                        await bulkAddDB(clean);
+                        showToast(`Imported ${clean.length} entries & restored settings`);
+                        render();
+                    } else {
+                        showToast("No valid data found");
+                    }
+                } catch (err) { 
+                    console.error(err);
+                    showToast("Import Failed"); 
+                }
+                input.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        function parseCSV(text) {
+            const lines = text.split(/\r?\n/).filter(l => l.trim());
+            const items = [];
+            for (let i = 1; i < lines.length; i++) {
+                const parts = lines[i].split(','); 
+                if (parts.length >= 1) items.push({ timestamp: parts[0], dosage: parts[2], reason: parts[4] });
+            }
+            return items;
+        }
+
+        function exportData(format) {
+            const data = getSortedIntakes();
+            const dateStr = new Date().toISOString().split('T')[0];
+            let blob, filename;
+
+            if (format === 'json') {
+                const exportObj = {
+                    meta: { version: 'v5', exportedAt: new Date().toISOString() },
+                    medicines: state.medicines,
+                    pillsLeft: state.pillsLeft,
+                    intakes: data
+                };
+                blob = new Blob([JSON.stringify(exportObj, null, 2)], { type: 'application/json' });
+                filename = `ppi_data_${dateStr}.json`;
+            } else {
+                const header = "Timestamp,Date,Time,Medicine,Dosage,Severity,Reason\n";
+                const rows = data.map(i => {
+                    const d = new Date(i.timestamp);
+                    // sanitize quotes for CSV
+                    const safeReason = (i.reason || '').replace(/"/g,'""');
+                    return `${i.timestamp},${d.toLocaleDateString()},${d.toLocaleTimeString()},"${i.medicine||''}",${i.dosage||''},${i.severity||''},"${safeReason}"`;
+                }).join('\n');
+                blob = new Blob([header + rows], {type: 'text/csv'});
+                filename = `ppi_data_${dateStr}.csv`;
+            }
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = filename;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            closeModal('export-modal-overlay');
+            showToast("Export complete");
+        }
+
+        function showToast(msg) {
+            const el = document.createElement('div');
+            el.className = `toast-anim bg-gray-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-full shadow-xl flex items-center gap-3 mb-3 pointer-events-auto`;
+            el.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-green-400 dark:text-green-600"></i><span class="text-sm font-semibold">${sanitize(msg)}</span>`;
+            document.getElementById('toast-container').appendChild(el);
+            lucide.createIcons();
+            setTimeout(() => el.remove(), 3000);
+        }
+
+        function showConfirm(title, msg, onConfirm) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = msg;
+            const btn = document.getElementById('modal-confirm-btn');
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+            newBtn.onclick = () => { onConfirm(); closeModal('modal-overlay'); };
+            document.getElementById('modal-overlay').classList.remove('hidden');
+        }
+        
+        async function installPWA() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`User response to the install prompt: ${outcome}`);
+            deferredPrompt = null;
+            render();
+        }
+
+        // --- Rendering ---
+        function render() {
+            // FIX: Prevent re-render if user is typing in filter inputs
+            if (document.activeElement && document.activeElement.tagName === 'INPUT' && document.activeElement.closest('.filter-panel')) {
+                return;
+            }
+
+            const filteredList = getFilteredIntakes();
+            const { averageIntervalMs, nextDoseTime, sorted } = calculateStats(filteredList);
+            
+            const { calendarDays, monthLabel } = getMonthlyCalendarData();
+            const now = state.now;
+            const activeFilterCount = countActiveFilters();
+            
+            let theme = 'green';
+            let themeGradient = 'to-emerald-600';
+            if (sorted.length > 0) {
+                const diffMs = now - new Date(sorted[0].timestamp);
+                const diffDays = diffMs / (1000 * 60 * 60 * 24);
+                if (diffDays < 5) { theme = 'red'; themeGradient = 'to-orange-600'; }
+                else if (diffDays >= 5 && diffDays < 10) { theme = 'amber'; themeGradient = 'to-yellow-500'; }
+            }
+            const gradientClass = `bg-gradient-to-br from-${theme}-600 ${themeGradient}`;
+
+            let headerHtml = `
+                <header class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-${theme}-600 dark:bg-${theme}-500 p-2.5 rounded-xl shadow-lg shadow-${theme}-200 dark:shadow-none transition-colors duration-500">
+                            <i data-lucide="pill" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div><h1 class="font-bold text-xl text-gray-900 dark:text-white select-none">PPI Tracker</h1></div>
+                    </div>
+                </header>
+            `;
+
+            let contentHtml = '';
+
+            if (state.activeTab === 'home') {
+                contentHtml += `<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">`;
+                
+                const isOverdue = sorted.length > 0 && nextDoseTime && nextDoseTime < now;
+                contentHtml += `
+                    <div class="md:col-span-2 bg-white dark:bg-gray-850 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden flex flex-col justify-between">
+                        <div class="${gradientClass} p-6 text-white text-center relative overflow-hidden transition-all duration-500">
+                            <div class="absolute -top-10 -right-10 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
+                            <p class="text-${theme}-100 text-xs font-bold uppercase tracking-widest mb-2 flex items-center justify-center gap-1.5 opacity-90"><i data-lucide="activity" class="w-3 h-3"></i> Next Predicted Dose</p>
+                            ${sorted.length < 2 
+                                ? `<div class="py-1"><span class="text-2xl font-bold opacity-100 block mb-1">Learning...</span><p class="text-xs text-${theme}-100 opacity-80">Log more doses</p></div>`
+                                : `<div class="py-1 relative z-10"><div class="text-4xl font-bold tracking-tight mb-2 drop-shadow-sm">${formatTime(nextDoseTime)}</div>${isOverdue ? `<div class="inline-flex items-center gap-1.5 bg-red-500/30 border border-red-400/30 py-1 px-3 rounded-lg backdrop-blur-sm animate-pulse"><i data-lucide="alert-circle" class="w-3 h-3"></i><span class="text-xs font-semibold">Overdue</span></div>` : ''}</div>`
+                            }
+                        </div>
+                        <div class="grid grid-cols-2 divide-x divide-gray-100 dark:divide-gray-800 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-850">
+                            <div class="p-3 text-center"><p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Avg Interval</p><p class="text-sm font-bold text-gray-800 dark:text-gray-200">${averageIntervalMs ? formatDuration(averageIntervalMs) : '--'}</p></div>
+                            <div class="p-3 text-center"><p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">Last Dose</p><p class="text-sm font-bold text-gray-800 dark:text-gray-200">${sorted.length > 0 ? formatTime(sorted[0].timestamp) : '--'}</p></div>
+                        </div>
+                    </div>
+                `;
+
+                const lowInv = state.pillsLeft <= 5;
+                contentHtml += `
+                    <div class="bg-white dark:bg-gray-850 rounded-3xl p-5 shadow-sm border ${lowInv ? 'border-red-200 dark:border-red-900 ring-2 ring-red-50 dark:ring-red-900/20' : 'border-gray-100 dark:border-gray-800'} flex flex-col items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-3 opacity-10"><i data-lucide="package" class="w-12 h-12 ${lowInv ? 'text-red-500' : 'text-gray-400'}"></i></div>
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-2 z-10">Inventory</p>
+                        <div class="text-4xl font-bold ${lowInv ? 'text-red-500' : 'text-gray-800 dark:text-gray-100'} mb-2 z-10">${state.pillsLeft}</div>
+                        <button onclick="openRefillModal()" class="w-full py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-bold rounded-xl transition-colors z-10">Refill</button>
+                    </div>
+                </div>`;
+
+                contentHtml += `<button onclick="openLogModal()" class="w-full bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white rounded-2xl p-4 flex items-center justify-center gap-3 transition-all shadow-xl shadow-red-200 dark:shadow-none mb-6 group"><div class="bg-red-500 group-hover:bg-red-400 rounded-full p-1.5 transition-colors"><i data-lucide="plus" class="w-5 h-5"></i></div><span class="text-lg font-bold tracking-wide">Log Dose Now</span></button>`;
+                contentHtml += `<button onclick="toggleCalendar()" class="mx-auto flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 uppercase tracking-widest transition-colors mb-6 py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><span>${state.showCalendar ? 'Hide Calendar' : 'Show Calendar'}</span><i data-lucide="${state.showCalendar ? 'chevron-up' : 'chevron-down'}" class="w-3 h-3"></i></button>`;
+
+                if (state.showCalendar) {
+                    contentHtml += `
+                        <div class="bar-animate bg-white dark:bg-gray-850 rounded-3xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <h2 class="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2"><i data-lucide="calendar-days" class="w-3 h-3"></i> Calendar</h2>
+                                <div class="flex items-center bg-gray-50 dark:bg-gray-800 rounded-lg p-0.5 border border-gray-100 dark:border-gray-700">
+                                    <button onclick="changeMonth(-1)" class="w-7 h-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-gray-700 text-gray-400"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                                    <span class="text-xs font-bold text-gray-700 dark:text-gray-300 px-3 w-28 text-center select-none">${monthLabel}</span>
+                                    <button onclick="changeMonth(1)" class="w-7 h-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-gray-700 text-gray-400"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-7 gap-1 mb-1">${['S','M','T','W','T','F','S'].map(d => `<div class="text-center text-[10px] font-bold text-gray-400 dark:text-gray-500">${d}</div>`).join('')}</div>
+                            <div class="grid grid-cols-7 gap-1">
+                                ${calendarDays.map(d => {
+                                    if(d.type==='padding') return `<div></div>`;
+                                    let cls = "aspect-square rounded-lg flex flex-col items-center justify-center text-xs font-semibold relative ";
+                                    if(d.count>0) cls+=`bg-${theme}-500 text-white shadow-sm`;
+                                    else { cls+=`text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800`; if(d.isToday) cls+=` ring-2 ring-${theme}-500 ring-offset-2 dark:ring-offset-gray-900`; }
+                                    return `<div class="${cls}">${d.day}${d.count>1 ? `<div class="w-1 h-1 rounded-full bg-white/50 absolute bottom-1.5"></div>`:''}</div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                contentHtml += `
+                    <div class="filter-panel space-y-4 pb-10">
+                        <div class="bg-white dark:bg-gray-850 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 mb-4 transition-all duration-300 ${state.showFilters ? 'ring-2 ring-blue-500/20' : ''}">
+                            <div class="flex justify-between items-center cursor-pointer" onclick="toggleFilterPanel()">
+                                <div class="flex items-center gap-2">
+                                    <div class="bg-blue-50 dark:bg-blue-900/30 p-1.5 rounded-lg">
+                                        <i data-lucide="filter" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-bold text-gray-900 dark:text-white">Filters</h3>
+                                        <p class="text-[10px] text-gray-500 dark:text-gray-400">${activeFilterCount > 0 ? `${activeFilterCount} active` : 'Refine history view'}</p>
+                                    </div>
+                                </div>
+                                <i data-lucide="${state.showFilters ? 'chevron-up' : 'chevron-down'}" class="w-4 h-4 text-gray-400"></i>
+                            </div>
+                            
+                            <div class="${state.showFilters ? 'block' : 'hidden'} mt-4 space-y-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                                <div class="grid grid-cols-2 gap-2">
+                                    <select onchange="updateFilter('medicine', this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-lg block w-full p-2.5">
+                                        <option value="">All Medicines</option>
+                                        ${state.medicines.map(m => `<option value="${m}" ${state.filters.medicine === m ? 'selected' : ''}>${sanitize(m)}</option>`).join('')}
+                                    </select>
+                                    <select onchange="updateFilter('dosage', this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-lg block w-full p-2.5">
+                                        <option value="">All Dosages</option>
+                                        <option value="10mg" ${state.filters.dosage === '10mg' ? 'selected' : ''}>10 mg</option>
+                                        <option value="20mg" ${state.filters.dosage === '20mg' ? 'selected' : ''}>20 mg</option>
+                                        <option value="40mg" ${state.filters.dosage === '40mg' ? 'selected' : ''}>40 mg</option>
+                                        <option value="Other" ${state.filters.dosage === 'Other' ? 'selected' : ''}>Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block mb-1 text-[10px] font-medium text-gray-500 uppercase">From Date</label>
+                                        <input type="date" value="${state.filters.startDate}" onchange="updateFilter('startDate', this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-lg block w-full p-2">
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-[10px] font-medium text-gray-500 uppercase">To Date</label>
+                                        <input type="date" value="${state.filters.endDate}" onchange="updateFilter('endDate', this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-lg block w-full p-2">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="block mb-1 text-[10px] font-medium text-gray-500 uppercase">Start Time</label>
+                                        <input type="time" value="${state.filters.startTime}" onchange="updateFilter('startTime', this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-lg block w-full p-2">
+                                    </div>
+                                    <div>
+                                        <label class="block mb-1 text-[10px] font-medium text-gray-500 uppercase">End Time</label>
+                                        <input type="time" value="${state.filters.endTime}" onchange="updateFilter('endTime', this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-lg block w-full p-2">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <!-- FIX: Changed oninput to onchange to prevent focus loss during typing -->
+                                    <input type="text" value="${sanitize(state.filters.reason)}" placeholder="Filter by reason (e.g. Heartburn)..." onchange="updateFilter('reason', this.value)" class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-xs rounded-lg block w-full p-2.5">
+                                </div>
+
+                                <div class="flex justify-end pt-2">
+                                     <button onclick="clearFilters()" class="text-xs text-red-500 hover:text-red-700 font-medium px-2 py-1">Clear Filters</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h2 class="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 pl-1 mb-2"><i data-lucide="history" class="w-3 h-3"></i> History List</h2>
+
+                        <div class="space-y-0 relative pl-4">
+                            ${filteredList.length > 0 ? `<div class="absolute left-[39px] top-6 bottom-6 w-[2px] bg-gray-100 dark:bg-gray-800 z-0"></div>` : ''}
+                            ${filteredList.length === 0 
+                                ? `<div class="text-center py-12 flex flex-col items-center justify-center border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-2xl bg-gray-50/50 dark:bg-gray-900/50"><p class="text-gray-400 dark:text-gray-500 text-sm font-medium">No records match filters.</p></div>` 
+                                : filteredList.map((item, idx) => {
+                                    const sevColor = item.severity >= 4 ? 'red' : item.severity === 3 ? 'yellow' : 'green';
+                                    return `
+                                    <div class="relative z-10 pb-4">
+                                        <div class="bg-white dark:bg-gray-850 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-[0_2px_8px_-4px_rgba(0,0,0,0.05)] flex justify-between items-center transition-all hover:border-${theme}-100 dark:hover:border-${theme}-900 hover:shadow-md group">
+                                            <div class="flex items-center gap-4">
+                                                <div class="flex flex-col items-center justify-center w-[46px] h-[46px] bg-${theme}-50/50 dark:bg-${theme}-900/20 rounded-xl text-${theme}-600 dark:text-${theme}-400 font-bold text-xs shrink-0">
+                                                    <span class="text-sm leading-none mb-0.5">${new Date(item.timestamp).getDate()}</span>
+                                                    <span class="text-[9px] uppercase tracking-wider leading-none opacity-80">${new Date(item.timestamp).toLocaleDateString([], {month:'short'})}</span>
+                                                </div>
+                                                <div>
+                                                    <div class="flex flex-col items-start gap-0.5">
+                                                        <div class="flex items-baseline gap-2">
+                                                            <p class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-tight">${formatTime(item.timestamp)}</p>
+                                                            <span class="text-xs font-semibold text-gray-600 dark:text-gray-300">${sanitize(item.medicine || 'Meds')}</span>
+                                                            ${item.dosage ? `<span class="text-[10px] font-bold text-gray-500 border border-gray-200 dark:border-gray-700 px-1.5 py-0.5 rounded">${sanitize(item.dosage)}</span>` : ''}
+                                                        </div>
+                                                        <div class="flex items-center gap-2">
+                                                            ${item.severity ? `<div class="w-2 h-2 rounded-full bg-${sevColor}-500"></div>` : ''}
+                                                            <p class="text-xs text-gray-400 dark:text-gray-500 font-medium truncate max-w-[120px]">${sanitize(item.reason || 'No notes')}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button onclick="confirmDelete('${item.timestamp}')" class="w-8 h-8 flex items-center justify-center text-gray-300 dark:text-gray-600 hover:text-red-500 rounded-lg transition-all opacity-0 group-hover:opacity-100"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </div>
+                                `}).join('')
+                            }
+                        </div>
+                    </div>
+                `;
+            } else {
+                contentHtml += `
+                    <div class="space-y-6 bar-animate">
+                        <div class="px-2"><h2 class="text-2xl font-bold text-gray-900 dark:text-white">Settings</h2><p class="text-sm text-gray-500 dark:text-gray-400">Manage your preferences.</p></div>
+                        
+                        ${deferredPrompt ? `
+                        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 shadow-lg shadow-blue-200 dark:shadow-none text-white relative overflow-hidden">
+                             <div class="relative z-10">
+                                <h3 class="font-bold text-lg mb-1">Install App</h3>
+                                <p class="text-blue-100 text-xs mb-4 max-w-[80%]">Add PPI Tracker to your home screen for easier access and a native experience.</p>
+                                <button onclick="installPWA()" class="bg-white text-blue-600 px-4 py-2 rounded-xl text-sm font-bold shadow-sm hover:bg-blue-50 transition-colors">Install Now</button>
+                             </div>
+                             <i data-lucide="smartphone" class="absolute -bottom-4 -right-4 w-32 h-32 text-white opacity-10 rotate-12"></i>
+                        </div>
+                        ` : ''}
+
+                        <div class="bg-white dark:bg-gray-850 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+                            <div class="flex items-center gap-3 mb-4"><div class="p-2 bg-green-100 dark:bg-green-900/30 rounded-xl"><i data-lucide="pill" class="w-5 h-5 text-green-600 dark:text-green-400"></i></div><h3 class="font-bold text-gray-900 dark:text-white">Medicines</h3></div>
+                            <div class="space-y-3 mb-4">
+                                ${state.medicines.map((med, idx) => `
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700">
+                                        <span class="font-medium text-sm text-gray-700 dark:text-gray-300">${sanitize(med)}</span>
+                                        <div class="flex gap-2">
+                                            <button onclick="editMedicine(${idx})" class="p-1.5 text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button onclick="deleteMedicine(${idx})" class="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="flex gap-2">
+                                <input type="text" id="new-med-name" placeholder="Add medicine name..." class="flex-1 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-xl px-4 py-2 focus:ring-green-500 focus:outline-none">
+                                <button onclick="addMedicineFromInput()" class="bg-gray-900 dark:bg-white text-white dark:text-black font-bold px-4 py-2 rounded-xl text-sm hover:opacity-90">Add</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-850 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+                            <div class="flex items-center gap-3 mb-6"><div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-xl"><i data-lucide="palette" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i></div><h3 class="font-bold text-gray-900 dark:text-white">Appearance</h3></div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col"><span class="font-medium text-gray-800 dark:text-gray-200">Dark Mode</span><span class="text-xs text-gray-500 dark:text-gray-400">Easier on the eyes</span></div>
+                                <button onclick="toggleDarkMode()" class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 ${state.darkMode ? 'bg-purple-600' : 'bg-gray-200 dark:bg-gray-700'}"><span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${state.darkMode ? 'translate-x-6' : 'translate-x-1'}"></span></button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-gray-850 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+                            <div class="flex items-center gap-3 mb-6"><div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-xl"><i data-lucide="database" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i></div><h3 class="font-bold text-gray-900 dark:text-white">Data & Reports</h3></div>
+                            <div class="space-y-3">
+                                <button onclick="printReport()" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors group">
+                                    <div class="flex items-center gap-3"><i data-lucide="printer" class="w-5 h-5 text-gray-400 group-hover:text-blue-500"></i><span class="font-medium text-gray-700 dark:text-gray-300">Doctor's Report</span></div><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                                </button>
+                                <button onclick="triggerImport()" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors group">
+                                    <div class="flex items-center gap-3"><i data-lucide="upload" class="w-5 h-5 text-gray-400 group-hover:text-blue-500"></i><span class="font-medium text-gray-700 dark:text-gray-300">Import Data</span></div><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                                </button>
+                                <button onclick="openExportModal()" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors group">
+                                    <div class="flex items-center gap-3"><i data-lucide="download" class="w-5 h-5 text-gray-400 group-hover:text-blue-500"></i><span class="font-medium text-gray-700 dark:text-gray-300">Export Data</span></div><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                                </button>
+                                <div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800">
+                                    <button onclick="confirmReset()" class="w-full flex items-center justify-center gap-2 p-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-colors text-sm font-semibold"><i data-lucide="trash-2" class="w-4 h-4"></i>Delete All History</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const navClass = "flex flex-col items-center justify-center w-full h-full space-y-1";
+            const activeClass = `text-${theme}-600 dark:text-${theme}-400`;
+            const inactiveClass = "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300";
+            let bottomNavHtml = `
+                <div class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800 h-20 pb-6 z-40">
+                    <div class="max-w-md mx-auto grid grid-cols-2 h-full">
+                        <button onclick="switchTab('home')" class="${navClass} ${state.activeTab === 'home' ? activeClass : inactiveClass}"><i data-lucide="home" class="w-6 h-6"></i><span class="text-[10px] font-bold uppercase tracking-wider">Home</span></button>
+                        <button onclick="switchTab('settings')" class="${navClass} ${state.activeTab === 'settings' ? activeClass : inactiveClass}"><i data-lucide="settings" class="w-6 h-6"></i><span class="text-[10px] font-bold uppercase tracking-wider">Settings</span></button>
+                    </div>
+                </div>
+            `;
+
+            app.innerHTML = headerHtml + contentHtml + bottomNavHtml;
+            lucide.createIcons();
+        }
+
+        initDB().then(() => {
+            setInterval(() => { 
+                const currentMinute = new Date().getMinutes();
+                // FIX: Only render if minute changed to avoid interrupting UI
+                if (currentMinute !== state.lastRenderMinute) {
+                    state.lastRenderMinute = currentMinute;
+                    state.now = new Date(); 
+                    render(); 
+                }
+            }, 1000); // Check every second, but only render on minute change
+        }).catch(err => {
+            console.error("Failed:", err);
+            document.getElementById('app').innerHTML = `<div class="text-center p-8 text-red-500"><p class="font-bold">Error loading database</p><p class="text-sm mt-2">Check console.</p></div>`;
+        });
+    </script>
+</body>
+</html>
